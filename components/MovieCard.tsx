@@ -5,6 +5,7 @@ type MovieCardProps = {
 };
 
 export default function MovieCard({ movie }: MovieCardProps) {
+
   return (
     <div
       style={{
@@ -15,7 +16,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
       }}
     >
       <img
-        src={movie.poster_path}
+        src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
         alt={movie.title}
         style={{
           height: 300,
