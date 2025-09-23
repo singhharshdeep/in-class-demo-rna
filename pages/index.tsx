@@ -84,9 +84,11 @@ export default function Home() {
         onChange={(event) => searchMovies(event.target.value)}
         placeholder="Search Movies"
       />
-      {filteredMovies.map((movie) => (
-        <MovieCard movie={movie} />
-      ))}
+      {filteredMovies.length > 0 ? (
+        filteredMovies.map((movie) => <MovieCard movie={movie} />)
+      ) : (
+        <p style={{ marginTop: 16 }}>No movies found</p>
+      )}
     </div>
   );
 }
