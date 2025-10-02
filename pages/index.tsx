@@ -63,6 +63,17 @@ export default function Home() {
   ];
 
   const [filteredMovies, setFilteredMovies] = useState(movies);
+  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
+
+  function addToFavorites(movie: Movie) {
+    setFavoriteMovies([...favoriteMovies, movie]);
+  }
+
+  function removeFromFavorites(movie: Movie) {
+    setFavoriteMovies(
+      favoriteMovies.filter((favoriteMovie) => favoriteMovie.id !== movie.id)
+    );
+  }
 
   function searchMovies(searchTerm: string) {
     const moviesToKeep = movies.filter((movie) =>
@@ -85,9 +96,38 @@ export default function Home() {
         placeholder="Search Movies"
       />
       {filteredMovies.length > 0 ? (
-        filteredMovies.map((movie) => <MovieCard movie={movie} />)
+        filteredMovies.map((movie) => (
+          <MovieCard
+            movie={movie}
+            addToFavorites={addToFavorites}
+            isFavorite={favoriteMovies.includes(movie)}
+            removeFromFavorites={removeFromFavorites}
+          />
+        ))
       ) : (
         <p style={{ marginTop: 16 }}>No movies found</p>
+      )}
+
+      <div
+        style={{
+          fontSize: 32,
+          marginTop: 16,
+        }}
+      >
+        Favorites
+      </div>
+
+      {favoriteMovies.length > 0 ? (
+        favoriteMovies.map((movie) => (
+          <MovieCard
+            movie={movie}
+            addToFavorites={addToFavorites}
+            isFavorite={true}
+            removeFromFavorites={removeFromFavorites}
+          />
+        ))
+      ) : (
+        <p style={{ marginTop: 16 }}>No favorites found</p>
       )}
     </div>
   );
