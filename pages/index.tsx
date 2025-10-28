@@ -4,7 +4,6 @@ import MovieCard from "../components/MovieCard";
 import { Movie } from "../types";
 
 export default function Home() {
-  const appName = "MovieCatalog";
   const movies: Movie[] = [
     {
       id: 1,
@@ -85,7 +84,6 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar name={appName} />
       <input
         style={{
           backgroundColor: "white",

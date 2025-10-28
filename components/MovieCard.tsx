@@ -13,9 +13,9 @@ export default function MovieCard({
   removeFromFavorites,
   isFavorite = false,
 }: MovieCardProps) {
-  function handleClick() {
-    alert(movie.overview);
-  }
+  // function handleClick() {
+  //   alert(movie.overview);
+  // }
 
   return (
     <div
