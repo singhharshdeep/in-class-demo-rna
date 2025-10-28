@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Movie } from "../types";
+import { AuthContext } from "@/context/AuthContext";
 
 type MovieCardProps = {
   movie: Movie;
@@ -16,6 +18,8 @@ export default function MovieCard({
   // function handleClick() {
   //   alert(movie.overview);
   // }
+
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <div
@@ -38,16 +42,18 @@ export default function MovieCard({
       <div>{movie.title}</div>
       <div>{movie.release_date}</div>
       <div>Rating: {movie.vote_average}</div>
-      <button
-        style={{
-          zIndex: 100,
-        }}
-        onClick={() => {
-          isFavorite ? removeFromFavorites(movie) : addToFavorites(movie);
-        }}
-      >
-        {isFavorite ? "Remove From Favorites" : "Add To Favorite"}
-      </button>
+      {isLoggedIn &&
+        <button
+          style={{
+            zIndex: 100,
+          }}
+          onClick={() => {
+            isFavorite ? removeFromFavorites(movie) : addToFavorites(movie);
+          }}
+        >
+          {isFavorite ? "Remove From Favorites" : "Add To Favorite"}
+        </button>
+      }
     </div>
   );
 }
