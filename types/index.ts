@@ -6,3 +6,9 @@ export type Movie = {
     release_date: string;
     vote_average: number;
 }
+
+export type User = {
+    email: string;
+    name: string;
+    password: string;
+}
