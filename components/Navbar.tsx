@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 type NavbarProps = {
-    name?: string;
-}
+  name?: string;
+};
 
 /*
 props = {
@@ -11,11 +13,16 @@ export default function Navbar({ name = "MovieCatalog" }: NavbarProps) {
   return (
     <div
       style={{
+        display: "flex",
+        justifyContent: "space-between",
         border: "1px solid white",
         padding: 8,
       }}
     >
-      {name}
+      <div>{name}</div>
+      <div>
+        <Link href="/auth">Login</Link>
+      </div>
     </div>
   );
 }
