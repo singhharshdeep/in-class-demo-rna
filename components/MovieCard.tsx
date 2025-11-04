@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Movie } from "../types";
 import { AuthContext } from "@/context/AuthContext";
+import { useRouter } from "next/router";
 
 type MovieCardProps = {
   movie: Movie;
@@ -15,9 +16,10 @@ export default function MovieCard({
   removeFromFavorites,
   isFavorite = false,
 }: MovieCardProps) {
-  // function handleClick() {
-  //   alert(movie.overview);
-  // }
+  const router = useRouter();
+  function handleClick() {
+    router.push(`/movies/${movie.id}`);
+  }
 
   const { isLoggedIn } = useContext(AuthContext);
 
@@ -29,7 +31,7 @@ export default function MovieCard({
         height: 400,
         marginTop: 16,
       }}
-      // onClick={handleClick}
+      onClick={handleClick}
     >
       <img
         src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

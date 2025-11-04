@@ -41,32 +41,6 @@ export default function Home() {
       ) : (
         <p style={{ marginTop: 16 }}>No movies found</p>
       )}
-
-      {isLoggedIn && (
-        <>
-          <div
-            style={{
-              fontSize: 32,
-              marginTop: 16,
-            }}
-          >
-            Favorites
-          </div>
-
-          {favoriteMovies.length > 0 ? (
-            favoriteMovies.map((movie) => (
-              <MovieCard
-                movie={movie}
-                addToFavorites={addToFavorites}
-                isFavorite={true}
-                removeFromFavorites={removeFromFavorites}
-              />
-            ))
-          ) : (
-            <p style={{ marginTop: 16 }}>No favorites found</p>
-          )}
-        </>
-      )}
     </div>
   );
 }
