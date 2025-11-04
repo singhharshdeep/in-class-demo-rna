@@ -23,8 +23,9 @@ export default function Navbar({ name = "MovieCatalog" }: NavbarProps) {
         padding: 8,
       }}
     >
-      <div>{name}</div>
+      <Link href="/">{name}</Link>
       <div>
+        {isLoggedIn && <Link style={{ marginRight: 8 }} href="/favorites">Favorites</Link>}
         {isLoggedIn && `Welcome ${user?.name}   `}
         {isLoggedIn ? (
           <button onClick={logout}>Logout</button>
