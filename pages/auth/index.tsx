@@ -15,7 +15,6 @@ const AuthPage = () => {
     password: null,
   });
 
-
   function handleLogin(event: FormEvent) {
     event.preventDefault();
 
@@ -47,7 +46,7 @@ const AuthPage = () => {
     if (newValue.length < 6) {
       setErrors({
         ...errors,
-        password: "Password must be atlease 6 characters",
+        password: "Password must be atleast 6 characters",
       });
     } else {
       setErrors({
@@ -60,33 +59,33 @@ const AuthPage = () => {
   }
 
   return (
-    <div
-      style={{
-        marginTop: 24,
-      }}
-    >
-      <form onSubmit={handleLogin}>
+    <div className="flex justify-center mt-6">
+      <form className="border p-12 rounded-3xl" onSubmit={handleLogin}>
         <div>
-          <label>Email</label>
+          <div>
+            <label className="text-2xl">Email</label>
+          </div>
           <input
             value={email}
             onChange={handleEmailChange}
-            className="border-white border"
+            className="border-gray-700 my-2 p-2 w-[300px] border"
             type="email"
           />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+          {errors.email && <p className="text-red-500">{errors.email}</p>}
         </div>
         <div>
-          <label>Password</label>
+          <div className="text-2xl">
+            <label>Password</label>
+          </div>
           <input
             value={password}
             onChange={handlePasswordChange}
-            className="border-white border"
+            className="border-gray-700 my-2 p-2 w-[300px] border"
             type="password"
           />
-          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
+          {errors.password && <p className="text-red-500">{errors.password}</p>}
         </div>
-        <button type="submit">Submit</button>
+        <button className="mt-4 border border-gray-700 p-4 rounded-2xl hover:bg-gray-700" type="submit">Submit</button>
       </form>
     </div>
   );

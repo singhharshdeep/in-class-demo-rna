@@ -19,25 +19,23 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="bg-gray-800">
       <input
-        style={{
-          backgroundColor: "white",
-          marginTop: 16,
-          color: "black",
-        }}
+        className="bg-transparent border-gray-700 border-2 text-white p-4 mt-4 w-3xl"
         onChange={(event) => searchMovies(event.target.value)}
         placeholder="Search Movies"
       />
       {filteredMovies.length > 0 ? (
-        filteredMovies.map((movie) => (
-          <MovieCard
-            movie={movie}
-            addToFavorites={addToFavorites}
-            isFavorite={favoriteMovies.includes(movie)}
-            removeFromFavorites={removeFromFavorites}
-          />
-        ))
+        <div className="mt-8 grid grid-cols-4">
+          {filteredMovies.map((movie) => (
+            <MovieCard
+              movie={movie}
+              addToFavorites={addToFavorites}
+              isFavorite={favoriteMovies.includes(movie)}
+              removeFromFavorites={removeFromFavorites}
+            />
+          ))}
+        </div>
       ) : (
         <p style={{ marginTop: 16 }}>No movies found</p>
       )}
