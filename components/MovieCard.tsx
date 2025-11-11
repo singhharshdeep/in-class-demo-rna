@@ -25,37 +25,30 @@ export default function MovieCard({
 
   return (
     <div
-      style={{
-        border: "1px solid white",
-        width: 300,
-        height: 400,
-        marginTop: 16,
-      }}
+      className="transition hover:scale-105 border w-[300px] h-[450px] mt-4 mb-12 rounded-2xl border-gray-700"
       onClick={handleClick}
     >
       <img
+        className="rounded-tl-2xl rounded-tr-2xl h-[300px] w-[300px]"
         src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
         alt={movie.title}
-        style={{
-          height: 300,
-          width: 300,
-        }}
       />
-      <div>{movie.title}</div>
-      <div>{movie.release_date}</div>
-      <div>Rating: {movie.vote_average}</div>
-      {isLoggedIn &&
-        <button
-          style={{
-            zIndex: 100,
-          }}
-          onClick={() => {
-            isFavorite ? removeFromFavorites(movie) : addToFavorites(movie);
-          }}
-        >
-          {isFavorite ? "Remove From Favorites" : "Add To Favorite"}
-        </button>
-      }
+      <div className="mt-2 flex flex-col justify-center items-center">
+        <div className="text-xl">{movie.title}</div>
+        <div>{movie.release_date}</div>
+        <div>Rating: {movie.vote_average}</div>
+        {isLoggedIn && (
+          <button
+            className="z-[100] bg-white rounded-full text-gray-800 p-2 hover:bg-gray-200"
+            onClick={(e) => {
+              e.stopPropagation();
+              isFavorite ? removeFromFavorites(movie) : addToFavorites(movie);
+            }}
+          >
+            {isFavorite ? "Remove From Favorites" : "Add To Favorite"}
+          </button>
+        )}
+      </div>
     </div>
   );
 }
