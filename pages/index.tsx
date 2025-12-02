@@ -28,6 +28,7 @@ export default function Home() {
         <div className="mt-8 grid grid-cols-4">
           {filteredMovies.map((movie) => (
             <MovieCard
+              key={movie.id}
               movie={movie}
               addToFavorites={addToFavorites}
               isFavorite={favoriteMovies.includes(movie)}

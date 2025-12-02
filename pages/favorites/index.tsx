@@ -31,6 +31,7 @@ export default function FavoritesPage() {
       {favoriteMovies.length > 0 ? (
         favoriteMovies.map((movie) => (
           <MovieCard
+            key={movie.id}
             movie={movie}
             addToFavorites={addToFavorites}
             isFavorite={true}
