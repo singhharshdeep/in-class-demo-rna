@@ -6,7 +6,6 @@ import { AuthContext } from "@/context/AuthContext";
 export default function Home() {
   const { movies, favoriteMovies, addToFavorites, removeFromFavorites } =
     useContext(MoviesContext);
-  const { isLoggedIn } = useContext(AuthContext);
 
   const [filteredMovies, setFilteredMovies] = useState(movies);
 
