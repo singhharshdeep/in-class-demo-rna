@@ -5,7 +5,7 @@ import { MoviesProvider } from "@/context/MoviesContext";
 import { AuthProvider } from "@/context/AuthContext";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const appName = "MovieHall";
+  const appName = "MovieCatalog";
 
   return (
     <AuthProvider>
